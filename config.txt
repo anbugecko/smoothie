@@ -1,8 +1,14 @@
+#
+#
 # Smoothieware Configuration for Micromake D1 with stock ZProbe
 # Made by Marius Antonsen
+# Made for 32 Microstepping
 #
 #
-
+# XYZ_BELT_PITCH 2
+# XYZ_PULLEY_TEETH 16
+#
+#
 
 # NOTE Lines must not exceed 132 characters
 # Robot module configurations : general handling of movement G-codes and slicing into moves
