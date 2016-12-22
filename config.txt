@@ -46,7 +46,7 @@ junction_deviation                           0.05             # Similar to the o
 
 # Stepper module configuration
 microseconds_per_step_pulse                  1                # Duration of step pulses to stepper drivers, in microseconds
-base_stepping_frequency                      100000           # Base frequency for stepping
+base_stepping_frequency                      100000            # Base frequency for stepping, higher gives smoother movement
 
 # Cartesian axis speed limits
 x_axis_max_speed                             30000            # mm/min
@@ -116,7 +116,7 @@ temperature_control.hotend.enable            true             # Whether to activ
                                                               # All configuration is ignored if false.
 temperature_control.hotend.thermistor_pin    0.23             # Pin for the thermistor to read
 temperature_control.hotend.heater_pin        2.7              # Pin that controls the heater
-temperature_control.hotend.thermistor        EPCOS100K        # see http://smoothieware.org/temperaturecontrol#toc5
+temperature_control.hotend.thermistor        Semitec-104NT4	  # see http://smoothieware.org/temperaturecontrol#toc5
 #temperature_control.hotend.beta             4066             # or set the beta value
 
 temperature_control.hotend.set_m_code        104              #
@@ -142,7 +142,7 @@ temperature_control.bed.heater_pin           2.5              #
 temperature_control.bed.thermistor           Honeywell100K    # see http://smoothieware.org/temperaturecontrol#toc5
 #temperature_control.bed.beta                4066             # or set the beta value
 
-temperature_control.bed.set_m_code           140              #
+temperature_control.bed.set_m_code           140              #s
 temperature_control.bed.set_and_wait_m_code  190              #
 temperature_control.bed.designator           B                #
 
