@@ -227,13 +227,13 @@ zprobe.enable                                true           # set to true to ena
 zprobe.probe_pin                             1.28!^          # pin probe is attached to if NC remove the !
 zprobe.slow_feedrate                         5               # mm/sec probe feed rate
 #zprobe.debounce_count                       100             # set if noisy
-zprobe.fast_feedrate                         20             # move feedrate mm/sec
+zprobe.fast_feedrate                         20             # move feedrate mm/sec ----------------------------- 20mm/sec for testing purpose
 zprobe.probe_height                          5               # how much above bed to start probe
 #gamma_min_endstop                           nc              # normally 1.28. Change to nc to prevent conflict,
 
 # associated with zprobe the leveling strategy to use
-#leveling-strategy.delta-calibration.enable   true            # basic delta calibration
-#leveling-strategy.delta-calibration.radius   100             # the probe radius
+leveling-strategy.delta-calibration.enable   true            # basic delta calibration
+leveling-strategy.delta-calibration.radius   75             # the probe radius
 
 # kill button (used to be called pause) maybe assigned to a different pin, set to the onboard pin by default
 kill_button_enable                           true             # set to true to enable a kill button
