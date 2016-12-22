@@ -4,8 +4,8 @@
 
 
 ###Features:
-*Hotend fan turns on/off at 50 Degrees C.
-*Works with standard Micromake Probe.
+Hotend fan turns on/off at 50 Degrees C.</br>
+Works with standard Micromake Probe.</br>
 
-Pinout info:
+Pinout info:</br>
 http://forums.reprap.org/file.php?13,file=77370,filename=pcb-overview-compressed.jpg
