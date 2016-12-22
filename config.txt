@@ -58,21 +58,21 @@ z_axis_max_speed                             30000            # mm/min
 alpha_step_pin                               2.0              # Pin for alpha stepper step signal
 alpha_dir_pin                                0.5              # Pin for alpha stepper direction
 alpha_en_pin                                 0.4              # Pin for alpha enable pin
-alpha_current                                1.5              # X stepper motor current
+alpha_current                                0.5              # X stepper motor current
 alpha_max_rate                               30000.0          # mm/min
 
 # --------- Y axis ---------
 beta_step_pin                                2.1              # Pin for beta stepper step signal
 beta_dir_pin                                 0.11             # Pin for beta stepper direction
 beta_en_pin                                  0.10             # Pin for beta enable
-beta_current                                 1.5              # Y stepper motor current
+beta_current                                 0.5              # Y stepper motor current
 beta_max_rate                                30000.0          # mm/min
 
 # --------- Z axis ---------
 gamma_step_pin                               2.2              # Pin for gamma stepper step signal
 gamma_dir_pin                                0.20             # Pin for gamma stepper direction
 gamma_en_pin                                 0.19             # Pin for gamma enable
-gamma_current                                1.5              # Z stepper motor current
+gamma_current                                0.5              # Z stepper motor current
 gamma_max_rate                               30000.0          # mm/min
 
 # Serial communications configuration ( baud rate default to 9600 if undefined )
@@ -108,7 +108,7 @@ extruder.hotend.en_pin                          0.21             # Pin for extru
 #extruder.hotend.retract_zlift_length            0               # zlift on retract in mm, 0 disables
 #extruder.hotend.retract_zlift_feedrate          6000            # zlift feedrate in mm/min (Note mm/min NOT mm/sec)
 
-delta_current                                1.5              # First extruder stepper motor current
+delta_current                                0.5              # First extruder stepper motor current
 
 
 # Hotend temperature control configuration
@@ -199,9 +199,9 @@ alpha_max_travel                             1000              # max travel in m
 beta_max_travel                              1000              # max travel in mm for beta/Y axis when homing
 gamma_max_travel                             1000              # max travel in mm for gamma/Z axis when homing
 
-alpha_fast_homing_rate_mm_s                  200              # homing feedrates in mm/second
-beta_fast_homing_rate_mm_s                   200              #
-gamma_fast_homing_rate_mm_s                  200              #
+alpha_fast_homing_rate_mm_s                  65              # homing feedrates in mm/second
+beta_fast_homing_rate_mm_s                   65              #
+gamma_fast_homing_rate_mm_s                  65              #
 alpha_slow_homing_rate_mm_s                  20               #
 beta_slow_homing_rate_mm_s                   20               #
 gamma_slow_homing_rate_mm_s                  20
