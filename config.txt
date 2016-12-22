@@ -1,3 +1,9 @@
+# Smoothieware Configuration for Micromake D1 with stock ZProbe
+# Made by Marius Antonsen
+#
+#
+
+
 # NOTE Lines must not exceed 132 characters
 # Robot module configurations : general handling of movement G-codes and slicing into moves
 default_feed_rate                            4000             # Default rate ( mm/minute ) for G1/G2/G3 moves
@@ -8,18 +14,18 @@ mm_max_arc_error                             0.01             # The maximum erro
                                                               # if both are used, will use largest segment length based on radius
 #mm_per_line_segment                         0.5              # Lines can be cut into segments ( not useful with cartesian
                                                               # coordinates robots ).
-delta_segments_per_second                    100              # for deltas only same as in Marlin/Delta, set to 0 to disable
+delta_segments_per_second                    160              # for deltas only same as in Marlin/Delta, set to 0 to disable ---- 160 Default Micromake
                                                               # and use mm_per_line_segment
 
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
 arm_solution                                 linear_delta     # selects the delta arm solution
-alpha_steps_per_mm                           200              # Steps per mm for alpha stepper X axis
-beta_steps_per_mm                            200              # Steps per mm for beta stepper Y axis
-gamma_steps_per_mm                           200              # Steps per mm for gamma stepper z axis
+alpha_steps_per_mm                           200              # Steps per mm for alpha stepper ---- X axis
+beta_steps_per_mm                            200              # Steps per mm for beta stepper ---- Y axis
+gamma_steps_per_mm                           200              # Steps per mm for gamma stepper ---- Z axis
 
-arm_length                                   217.3            # this is the length of an arm from hinge to hinge
-arm_radius                                   171.3            # this is the horizontal distance from hinge to hinge
+arm_length                                   217.3            # this is the length of an arm from hinge to hinge ---- 217.3 Default Micromake
+arm_radius                                   105            # this is the horizontal distance from hinge to hinge ---- 105 Default Micromake
                                                               # when the effector is centered
 
 # Planner module configuration : Look-ahead and acceleration configuration
@@ -41,6 +47,7 @@ x_axis_max_speed                             30000            # mm/min
 y_axis_max_speed                             30000            # mm/min
 z_axis_max_speed                             30000            # mm/min
 
+# --------- X axis ---------
 # Stepper module pins ( ports, and pin numbers, appending "!" to the number will invert a pin )
 alpha_step_pin                               2.0              # Pin for alpha stepper step signal
 alpha_dir_pin                                0.5              # Pin for alpha stepper direction
@@ -48,12 +55,14 @@ alpha_en_pin                                 0.4              # Pin for alpha en
 alpha_current                                1.5              # X stepper motor current
 alpha_max_rate                               30000.0          # mm/min
 
+# --------- Y axis ---------
 beta_step_pin                                2.1              # Pin for beta stepper step signal
 beta_dir_pin                                 0.11             # Pin for beta stepper direction
 beta_en_pin                                  0.10             # Pin for beta enable
 beta_current                                 1.5              # Y stepper motor current
 beta_max_rate                                30000.0          # mm/min
 
+# --------- Z axis ---------
 gamma_step_pin                               2.2              # Pin for gamma stepper step signal
 gamma_dir_pin                                0.20             # Pin for gamma stepper direction
 gamma_en_pin                                 0.19             # Pin for gamma enable
