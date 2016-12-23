@@ -26,9 +26,9 @@ delta_segments_per_second                    160              # for deltas only 
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
 arm_solution                                 linear_delta     # selects the delta arm solution
-alpha_steps_per_mm                           200              # Steps per mm for alpha stepper ---- X axis
-beta_steps_per_mm                            200              # Steps per mm for beta stepper ---- Y axis
-gamma_steps_per_mm                           200              # Steps per mm for gamma stepper ---- Z axis
+alpha_steps_per_mm                           200              # Steps per mm for alpha stepper ---- X axis --- 100 Default Micromake 16 microstepping
+beta_steps_per_mm                            200              # Steps per mm for beta stepper ---- Y axis --- 100 Default Micromake 16 microstepping
+gamma_steps_per_mm                           200              # Steps per mm for gamma stepper ---- Z axis --- 100 Default Micromake 16 microstepping
 
 arm_length                                   217.3            # this is the length of an arm from hinge to hinge ---- 217.3 Default Micromake
 arm_radius                                   105            # this is the horizontal distance from hinge to hinge ---- 105 Default Micromake
@@ -56,21 +56,21 @@ z_axis_max_speed                             30000            # mm/min
 # --------- X axis ---------
 # Stepper module pins ( ports, and pin numbers, appending "!" to the number will invert a pin )
 alpha_step_pin                               2.0              # Pin for alpha stepper step signal
-alpha_dir_pin                                0.5              # Pin for alpha stepper direction
+alpha_dir_pin                                0.5!              # Pin for alpha stepper direction
 alpha_en_pin                                 0.4              # Pin for alpha enable pin
 alpha_current                                0.5              # X stepper motor current
 alpha_max_rate                               30000.0          # mm/min
 
 # --------- Y axis ---------
 beta_step_pin                                2.1              # Pin for beta stepper step signal
-beta_dir_pin                                 0.11             # Pin for beta stepper direction
+beta_dir_pin                                 0.11!             # Pin for beta stepper direction
 beta_en_pin                                  0.10             # Pin for beta enable
 beta_current                                 0.5              # Y stepper motor current
 beta_max_rate                                30000.0          # mm/min
 
 # --------- Z axis ---------
 gamma_step_pin                               2.2              # Pin for gamma stepper step signal
-gamma_dir_pin                                0.20             # Pin for gamma stepper direction
+gamma_dir_pin                                0.20!             # Pin for gamma stepper direction
 gamma_en_pin                                 0.19             # Pin for gamma enable
 gamma_current                                0.5              # Z stepper motor current
 gamma_max_rate                               30000.0          # mm/min
@@ -288,7 +288,7 @@ currentcontrol_module_enable                 true             #
 return_error_on_unhandled_gcode              false            #
 
 # network settings
-network.enable                               false            # enable the ethernet network services
+network.enable                               true            # enable the ethernet network services
 network.webserver.enable                     true             # enable the webserver
 network.telnet.enable                        true             # enable the telnet server
 network.ip_address                           auto             # use dhcp to get ip address
