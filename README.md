@@ -1,6 +1,4 @@
 # Smoothieware for Micromake D1
-#!!! Untested !!! Work in progress !!!
-
 
 
 ###Features:
