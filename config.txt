@@ -26,9 +26,9 @@ delta_segments_per_second                    160              # for deltas only 
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
 arm_solution                                 linear_delta     # selects the delta arm solution
-alpha_steps_per_mm                           200              # Steps per mm for alpha stepper ---- X axis --- 100 Default Micromake 16 microstepping
-beta_steps_per_mm                            200              # Steps per mm for beta stepper ---- Y axis --- 100 Default Micromake 16 microstepping
-gamma_steps_per_mm                           200              # Steps per mm for gamma stepper ---- Z axis --- 100 Default Micromake 16 microstepping
+alpha_steps_per_mm                           100              # Steps per mm for alpha stepper ---- X axis --- 100 Default Micromake 16 microstepping
+beta_steps_per_mm                            100              # Steps per mm for beta stepper ---- Y axis --- 100 Default Micromake 16 microstepping
+gamma_steps_per_mm                           100              # Steps per mm for gamma stepper ---- Z axis --- 100 Default Micromake 16 microstepping
 
 arm_length                                   217.3            # this is the length of an arm from hinge to hinge ---- 217.3 Default Micromake
 arm_radius                                   105            # this is the horizontal distance from hinge to hinge ---- 105 Default Micromake
@@ -56,23 +56,23 @@ z_axis_max_speed                             30000            # mm/min
 # --------- X axis ---------
 # Stepper module pins ( ports, and pin numbers, appending "!" to the number will invert a pin )
 alpha_step_pin                               2.0              # Pin for alpha stepper step signal
-alpha_dir_pin                                0.5!              # Pin for alpha stepper direction
+alpha_dir_pin                                0.5              # Pin for alpha stepper direction
 alpha_en_pin                                 0.4              # Pin for alpha enable pin
-alpha_current                                0.5              # X stepper motor current
+alpha_current                                0.7              # X stepper motor current
 alpha_max_rate                               30000.0          # mm/min
 
 # --------- Y axis ---------
 beta_step_pin                                2.1              # Pin for beta stepper step signal
-beta_dir_pin                                 0.11!             # Pin for beta stepper direction
+beta_dir_pin                                 0.11             # Pin for beta stepper direction
 beta_en_pin                                  0.10             # Pin for beta enable
-beta_current                                 0.5              # Y stepper motor current
+beta_current                                 0.7              # Y stepper motor current
 beta_max_rate                                30000.0          # mm/min
 
 # --------- Z axis ---------
 gamma_step_pin                               2.2              # Pin for gamma stepper step signal
-gamma_dir_pin                                0.20!             # Pin for gamma stepper direction
+gamma_dir_pin                                0.20             # Pin for gamma stepper direction
 gamma_en_pin                                 0.19             # Pin for gamma enable
-gamma_current                                0.5              # Z stepper motor current
+gamma_current                                0.7              # Z stepper motor current
 gamma_max_rate                               30000.0          # mm/min
 
 # Serial communications configuration ( baud rate default to 9600 if undefined )
@@ -86,13 +86,13 @@ second_usb_serial_enable                     false            # This enables a s
 
 # Extruder module configuration
 extruder.hotend.enable                          true             # Whether to activate the extruder module at all. All configuration is ignored if false
-extruder.hotend.steps_per_mm                    150              # Steps per mm for extruder stepper
+extruder.hotend.steps_per_mm                    168.5              # Steps per mm for extruder stepper
 extruder.hotend.default_feed_rate               600              # Default rate ( mm/minute ) for moves where only the extruder moves
 extruder.hotend.acceleration                    500              # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
 extruder.hotend.max_speed                       50               # mm/s
 
 extruder.hotend.step_pin                        2.3              # Pin for extruder step signal
-extruder.hotend.dir_pin                         0.22             # Pin for extruder dir signal
+extruder.hotend.dir_pin                         0.22!             # Pin for extruder dir signal
 extruder.hotend.en_pin                          0.21             # Pin for extruder enable signal
 
 # extruder offset
@@ -116,8 +116,8 @@ temperature_control.hotend.enable            true             # Whether to activ
                                                               # All configuration is ignored if false.
 temperature_control.hotend.thermistor_pin    0.23             # Pin for the thermistor to read
 temperature_control.hotend.heater_pin        2.7              # Pin that controls the heater
-temperature_control.hotend.thermistor        Semitec-104NT4	  # see http://smoothieware.org/temperaturecontrol#toc5
-#temperature_control.hotend.beta             4066             # or set the beta value
+#temperature_control.hotend.thermistor        Semitec-104NT4	  # see http://smoothieware.org/temperaturecontrol#toc5
+temperature_control.hotend.beta              3950 # or set the beta value
 
 temperature_control.hotend.set_m_code        104              #
 temperature_control.hotend.set_and_wait_m_code 109            #
@@ -158,7 +158,7 @@ switch.fan.output_pin                        2.6              # 2.6 i Heater 2 C
 switch.fan.output_type                       pwm              # pwm output settable with S parameter in the input_on_comand
 #switch.fan.max_pwm                           255              # set max pwm for the pin default is 255
 
-# --------- Connect hotend fan to Pin 2.4 and fan will turn on/off when hotend reaches 50 degrees Celcius --------------
+# --------- Connect hotend fan to Pin 2.4 and fan will turn on/off when hotend reaches 60 degrees Celcius --------------
 
 switch.misc.enable                           true             #
 switch.misc.input_on_command                 M42              #
@@ -193,7 +193,7 @@ beta_max                                     0                #
 gamma_min_endstop                            nc               #
 gamma_max_endstop                            1.29^            #
 gamma_homing_direction                       home_to_max      #
-gamma_max                                    300              #
+gamma_max                                    288.4            #
 
 alpha_max_travel                             1000              # max travel in mm for alpha/X axis when homing
 beta_max_travel                              1000              # max travel in mm for beta/Y axis when homing
@@ -222,18 +222,23 @@ gamma_trim                                   0                 # software trim f
 #move_to_origin_after_home                    true             # move XY to 0,0 after homing
 #endstop_debounce_count                       100              # uncomment if you get noise on your endstops
 
-# optional Z probe
 zprobe.enable                                true           # set to true to enable a zprobe
 zprobe.probe_pin                             1.28!^          # pin probe is attached to if NC remove the !
 zprobe.slow_feedrate                         5               # mm/sec probe feed rate
-#zprobe.debounce_count                       100             # set if noisy
-zprobe.fast_feedrate                         20             # move feedrate mm/sec ----------------------------- 20mm/sec for testing purpose
+#zprobe.debounce_count                       300             # set if noisy
+zprobe.fast_feedrate                         450             # move feedrate
 zprobe.probe_height                          5               # how much above bed to start probe
-#gamma_min_endstop                           nc              # normally 1.28. Change to nc to prevent conflict,
 
 # associated with zprobe the leveling strategy to use
 leveling-strategy.delta-calibration.enable   true            # basic delta calibration
-leveling-strategy.delta-calibration.radius   75             # the probe radius
+leveling-strategy.delta-calibration.radius   70             # the probe radius
+leveling-strategy.delta-grid.enable          true
+leveling-strategy.delta-grid.radius          70
+leveling-strategy.delta-grid.size            7
+leveling-strategy.delta-grid.do_home         true
+leveling-strategy.delta-grid.save            true
+
+
 
 # kill button (used to be called pause) maybe assigned to a different pin, set to the onboard pin by default
 kill_button_enable                           true             # set to true to enable a kill button
@@ -248,15 +253,15 @@ panel.encoder_b_pin                          3.26!^            # encoder pin
 # Example for reprap discount GLCD
 # on glcd EXP1 is to left and EXP2 is to right, pin 1 is bottom left, pin 2 is top left etc.
 # +5v is EXP1 pin 10, Gnd is EXP1 pin 9
-#panel.lcd                                   reprap_discount_glcd     #
-#panel.spi_channel                           0                 # spi channel to use  ; GLCD EXP1 Pins 3,5 (MOSI, SCLK)
-#panel.spi_cs_pin                            0.16              # spi chip select     ; GLCD EXP1 Pin 4
-#panel.encoder_a_pin                         3.25!^            # encoder pin         ; GLCD EXP2 Pin 3
-#panel.encoder_b_pin                         3.26!^            # encoder pin         ; GLCD EXP2 Pin 5
-#panel.click_button_pin                      1.30!^            # click button        ; GLCD EXP1 Pin 2
-#panel.buzz_pin                              1.31              # pin for buzzer      ; GLCD EXP1 Pin 1
-#panel.button_pause_pin                      2.11^             # kill/pause          ; GLCD EXP2 Pin 8 either
-#panel.back_button_pin                       2.11!^            # back button         ; GLCD EXP2 Pin 8 or
+panel.lcd                                   reprap_discount_glcd     #
+panel.spi_channel                           0                 # spi channel to use  ; GLCD EXP1 Pins 3,5 (MOSI, SCLK)
+panel.spi_cs_pin                            0.16              # spi chip select     ; GLCD EXP1 Pin 4
+panel.encoder_a_pin                         3.25!^            # encoder pin         ; GLCD EXP2 Pin 3
+panel.encoder_b_pin                         3.26!^            # encoder pin         ; GLCD EXP2 Pin 5
+panel.click_button_pin                      1.30!^            # click button        ; GLCD EXP1 Pin 2
+panel.buzz_pin                              1.31              # pin for buzzer      ; GLCD EXP1 Pin 1
+panel.button_pause_pin                      2.11^             # kill/pause          ; GLCD EXP2 Pin 8 either
+panel.back_button_pin                       2.11!^            # back button         ; GLCD EXP2 Pin 8 or
 
 # pins used with other panels
 #panel.up_button_pin                         0.1!              # up button if used
@@ -291,7 +296,9 @@ return_error_on_unhandled_gcode              false            #
 network.enable                               true            # enable the ethernet network services
 network.webserver.enable                     true             # enable the webserver
 network.telnet.enable                        true             # enable the telnet server
+network.plan9.enable                         true             # enable the plan9 network filesystem
 network.ip_address                           auto             # use dhcp to get ip address
+network.hostname                             Smoothieware
 # uncomment the 3 below to manually setup ip address
 #network.ip_address                           192.168.3.222    # the IP address
 #network.ip_mask                              255.255.255.0    # the ip mask
