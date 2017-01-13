@@ -9,6 +9,10 @@ Pinout info:</br>
 http://forums.reprap.org/file.php?13,file=77370,filename=pcb-overview-compressed.jpg
 
 
+Pronterface can connect to Smoothie over the network by using telnet</br>
+just enter ip_of_smoothie:23instead of the serial port before clicking 'Connect'. </br></br>
+
+
 #Delta calibration and grid levling
 
 M561; clears the grid and turns off compensation</br>
