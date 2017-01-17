@@ -1,5 +1,6 @@
 # Smoothieware for Micromake D1
 
+#Remember to change the jumper on the board to 1/32 microstepping
 
 ###Features:
 Hotend fan turns on/off at 50 Degrees C.</br>

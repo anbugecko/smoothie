@@ -1,4 +1,4 @@
-#
+﻿#
 #
 # Smoothieware Configuration for Micromake D1 with stock ZProbe
 # Made by Marius Antonsen
@@ -48,10 +48,6 @@ junction_deviation                           0.05             # Similar to the o
 microseconds_per_step_pulse                  1                # Duration of step pulses to stepper drivers, in microseconds
 base_stepping_frequency                      100000            # Base frequency for stepping, higher gives smoother movement
 
-# Cartesian axis speed limits
-x_axis_max_speed                             30000            # mm/min
-y_axis_max_speed                             30000            # mm/min
-z_axis_max_speed                             30000            # mm/min
 
 # --------- X axis ---------
 # Stepper module pins ( ports, and pin numbers, appending "!" to the number will invert a pin )
@@ -126,7 +122,7 @@ temperature_control.hotend.designator        T                #
 #temperature_control.hotend.min_temp         0                # Set minimum temperature - Will prevent heating below 0 by default
 
 # safety control is enabled by default and can be overidden here, the values show the defaults
-#temperature_control.hotend.runaway_heating_timeout      900   # max is 2040 seconds, how long it can take to heat up
+#temperature_control.hotend.runaway_heating_timeout      2040  # max is 2040 seconds, how long it can take to heat up
 #temperature_control.hotend.runaway_cooling_timeout      900   # max is 2040 seconds, how long it can take to cool down if temp is set lower
 #temperature_control.hotend.runaway_range                20    # Max setting is 63°C
 
@@ -161,10 +157,11 @@ switch.fan.output_type                       pwm              # pwm output setta
 # --------- Connect hotend fan to Pin 2.4 and fan will turn on/off when hotend reaches 60 degrees Celcius --------------
 
 switch.misc.enable                           true             #
-switch.misc.input_on_command                 M42              #
+switch.misc.input_on_command                 M42S125         #
 switch.misc.input_off_command                M43              #
 switch.misc.output_pin                       2.4              # Pin 2.4 is the Fan connector
-switch.misc.output_type                      digital          # just an on or off pin
+switch.misc.output_type                      pwm              #pwm output settable with S parameter in the input_on_comand
+#switch.misc.max_pwm                           255              # set max pwm for the pin default is 255
 
 # automatically toggle a switch at a specified temperature. Different ones of these may be defined to monitor different temperatures and switch different swithxes
 # useful to turn on a fan or water pump to cool the hotend
@@ -195,16 +192,16 @@ gamma_max_endstop                            1.29^            #
 gamma_homing_direction                       home_to_max      #
 gamma_max                                    288.4            #
 
-alpha_max_travel                             1000              # max travel in mm for alpha/X axis when homing
-beta_max_travel                              1000              # max travel in mm for beta/Y axis when homing
-gamma_max_travel                             1000              # max travel in mm for gamma/Z axis when homing
+alpha_max_travel                             800              # max travel in mm for alpha/X axis when homing
+beta_max_travel                              800              # max travel in mm for beta/Y axis when homing
+gamma_max_travel                             800              # max travel in mm for gamma/Z axis when homing
 
-alpha_fast_homing_rate_mm_s                  65              # homing feedrates in mm/second
-beta_fast_homing_rate_mm_s                   65              #
-gamma_fast_homing_rate_mm_s                  65              #
-alpha_slow_homing_rate_mm_s                  20               #
-beta_slow_homing_rate_mm_s                   20               #
-gamma_slow_homing_rate_mm_s                  20
+alpha_fast_homing_rate_mm_s                  250              # homing feedrates in mm/second
+beta_fast_homing_rate_mm_s                   250              #
+gamma_fast_homing_rate_mm_s                  250              #
+alpha_slow_homing_rate_mm_s                  200               #
+beta_slow_homing_rate_mm_s                   200               #
+gamma_slow_homing_rate_mm_s                  200
 
 alpha_homing_retract_mm                      5                # retract/bounce distance after homing in mm
 beta_homing_retract_mm                       5                #
@@ -226,14 +223,14 @@ zprobe.enable                                true           # set to true to ena
 zprobe.probe_pin                             1.28!^          # pin probe is attached to if NC remove the !
 zprobe.slow_feedrate                         5               # mm/sec probe feed rate
 #zprobe.debounce_count                       300             # set if noisy
-zprobe.fast_feedrate                         450             # move feedrate
+zprobe.fast_feedrate                         900             # move feedrate
 zprobe.probe_height                          5               # how much above bed to start probe
 
 # associated with zprobe the leveling strategy to use
 leveling-strategy.delta-calibration.enable   true            # basic delta calibration
-leveling-strategy.delta-calibration.radius   70             # the probe radius
+leveling-strategy.delta-calibration.radius   85             # the probe radius
 leveling-strategy.delta-grid.enable          true
-leveling-strategy.delta-grid.radius          70
+leveling-strategy.delta-grid.radius          85
 leveling-strategy.delta-grid.size            7
 leveling-strategy.delta-grid.do_home         true
 leveling-strategy.delta-grid.save            true
