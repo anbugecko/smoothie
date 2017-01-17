@@ -25,4 +25,4 @@ G0 Z0; Then move to the point the machine currently thinks is Z 0</br>
 ; Then move the head to the bed by jogging, using Pronterface's arrows, the panel or the web interface.</br>
 M306 Z0; Save new z height</br>
 M374; Saves the grid to a file on the SD card (ZGrid).</br>
-M500; Saves the probe settings</br>
+M500; Saves the probe settings</br> 
