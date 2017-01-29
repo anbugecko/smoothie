@@ -54,21 +54,21 @@ base_stepping_frequency                      100000            # Base frequency 
 alpha_step_pin                               2.0              # Pin for alpha stepper step signal
 alpha_dir_pin                                0.5              # Pin for alpha stepper direction
 alpha_en_pin                                 0.4              # Pin for alpha enable pin
-alpha_current                                0.7              # X stepper motor current
+alpha_current                                1.1              # X stepper motor current
 alpha_max_rate                               30000.0          # mm/min
 
 # --------- Y axis ---------
 beta_step_pin                                2.1              # Pin for beta stepper step signal
 beta_dir_pin                                 0.11             # Pin for beta stepper direction
 beta_en_pin                                  0.10             # Pin for beta enable
-beta_current                                 0.7              # Y stepper motor current
+beta_current                                 1.1              # Y stepper motor current
 beta_max_rate                                30000.0          # mm/min
 
 # --------- Z axis ---------
 gamma_step_pin                               2.2              # Pin for gamma stepper step signal
 gamma_dir_pin                                0.20             # Pin for gamma stepper direction
 gamma_en_pin                                 0.19             # Pin for gamma enable
-gamma_current                                0.7              # Z stepper motor current
+gamma_current                                1.1              # Z stepper motor current
 gamma_max_rate                               30000.0          # mm/min
 
 # Serial communications configuration ( baud rate default to 9600 if undefined )
@@ -104,7 +104,7 @@ extruder.hotend.en_pin                          0.21             # Pin for extru
 #extruder.hotend.retract_zlift_length            0               # zlift on retract in mm, 0 disables
 #extruder.hotend.retract_zlift_feedrate          6000            # zlift feedrate in mm/min (Note mm/min NOT mm/sec)
 
-delta_current                                0.5              # First extruder stepper motor current
+delta_current                                1.1              # First extruder stepper motor current
 
 
 # Hotend temperature control configuration
@@ -190,48 +190,46 @@ beta_max                                     0                #
 gamma_min_endstop                            nc               #
 gamma_max_endstop                            1.29^            #
 gamma_homing_direction                       home_to_max      #
-gamma_max                                    288.4            #
+gamma_max                                    240            #
 
 alpha_max_travel                             800              # max travel in mm for alpha/X axis when homing
 beta_max_travel                              800              # max travel in mm for beta/Y axis when homing
 gamma_max_travel                             800              # max travel in mm for gamma/Z axis when homing
 
-alpha_fast_homing_rate_mm_s                  250              # homing feedrates in mm/second
-beta_fast_homing_rate_mm_s                   250              #
-gamma_fast_homing_rate_mm_s                  250              #
-alpha_slow_homing_rate_mm_s                  200               #
-beta_slow_homing_rate_mm_s                   200               #
-gamma_slow_homing_rate_mm_s                  200
+alpha_fast_homing_rate_mm_s                  200              # Alpha tower fast homing feedrate in mm/second
+alpha_slow_homing_rate_mm_s                  65               # Alpha tower slow homing feedrate in mm/second
+beta_fast_homing_rate_mm_s                   200              # Beta  tower fast homing feedrate in mm/second
+beta_slow_homing_rate_mm_s                   65               # Beta  tower slow homing feedrate in mm/second
+gamma_fast_homing_rate_mm_s                  200              # Gamma tower fast homing feedrate in mm/second
+gamma_slow_homing_rate_mm_s                  65               # Gamma tower slow homing feedrate in mm/second
 
-alpha_homing_retract_mm                      5                # retract/bounce distance after homing in mm
-beta_homing_retract_mm                       5                #
-gamma_homing_retract_mm                      5                #
+alpha_homing_retract_mm                      5                # Distance to retract from the endstop after it is hit for alpha/X
+beta_homing_retract_mm                       5                # Distance to retract from the endstop after it is hit for beta/Y
+gamma_homing_retract_mm                      5                # Distance to retract from the endstop after it is hit for gamma/Z
 
 alpha_trim                                   0                 # software trim for alpha stepper endstop (in mm)
 beta_trim                                    0                 # software trim for beta stepper endstop (in mm)
 gamma_trim                                   0                 # software trim for gamma stepper endstop (in mm)
 
-# optional enable limit switches, actions will stop if any enabled limit switch is triggered (all are set for delta)
-#alpha_limit_enable                          false            # set to true to enable X min and max limit switches
-#beta_limit_enable                           false            # set to true to enable Y min and max limit switches
-#gamma_limit_enable                          false            # set to true to enable Z min and max limit switches
-
-#move_to_origin_after_home                    true             # move XY to 0,0 after homing
-#endstop_debounce_count                       100              # uncomment if you get noise on your endstops
-
 zprobe.enable                                true           # set to true to enable a zprobe
 zprobe.probe_pin                             1.28!^          # pin probe is attached to if NC remove the !
-zprobe.slow_feedrate                         5               # mm/sec probe feed rate
 #zprobe.debounce_count                       300             # set if noisy
-zprobe.fast_feedrate                         900             # move feedrate
-zprobe.probe_height                          5               # how much above bed to start probe
+
+zprobe.return_feedrate	                     100	             # Speed in millimetres/second at which the probe does the return after a probe.
+zprobe.slow_feedrate                         125             # mm/sec probe feed rate
+zprobe.fast_feedrate                         200             # move feedrate
+zprobe.probe_height                          10               # how much above bed to start probe
 
 # associated with zprobe the leveling strategy to use
 leveling-strategy.delta-calibration.enable   true            # basic delta calibration
-leveling-strategy.delta-calibration.radius   85             # the probe radius
+leveling-strategy.delta-calibration.radius   75             # the probe radius
+#leveling-strategy.delta-calibration.initial_height        40        # The initial height above the bed we stop the initial move down after home
+
+
 leveling-strategy.delta-grid.enable          true
-leveling-strategy.delta-grid.radius          85
-leveling-strategy.delta-grid.size            7
+leveling-strategy.delta-grid.radius          75
+#leveling-strategy.delta-grid.initial_heigh   40
+leveling-strategy.delta-grid.size            13
 leveling-strategy.delta-grid.do_home         true
 leveling-strategy.delta-grid.save            true
 
