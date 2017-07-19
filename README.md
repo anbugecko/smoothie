@@ -16,7 +16,10 @@ just enter ip_of_smoothie:23instead of the serial port before clicking 'Connect'
 
 #Delta calibration and grid levling
 
+
+
 M561; clears the grid and turns off compensation</br>
+M280 S3.0; Pin down</br>
 G32; Probes the three probe points and defines the bed plane, this will remain in effect until reset or M561</br>
 M500; Saves the probe points and the probe offsets</br>
 G31; probes the grid and turns the compensation on, this will remain in effect until reset or M561/M370 optional parameters Jn sets the radius for this prob</br>
@@ -26,3 +29,4 @@ G0 Z0; Then move to the point the machine currently thinks is Z 0</br>
 M306 Z0; Save new z height</br>
 M374; Saves the grid to a file on the SD card (ZGrid).</br>
 M500; Saves the probe settings</br> 
+M280 S7.0; pin up
