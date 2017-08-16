@@ -10,8 +10,8 @@
 #
 
 # Basic motion configuration
-default_feed_rate                            4000             # Default speed (mm/minute) for G1/G2/G3 moves
-default_seek_rate                            4000             # Default speed (mm/minute) for G0 moves
+default_feed_rate                            3600             # Default speed (mm/minute) for G1/G2/G3 moves
+default_seek_rate                            3600             # Default speed (mm/minute) for G0 moves
 mm_per_arc_segment                           0.0              # Fixed length for line segments that divide arcs, 0 to disable
 #mm_per_line_segment                         5                # Cut lines into segments this size
 mm_max_arc_error                             0.01             # The maximum error for line segments that divide arcs 0 to disable
@@ -22,18 +22,18 @@ delta_segments_per_second                    100              # For deltas only,
 
 
 # Arm solution configuration : Cartesian robot. Translates mm positions into stepper positions
-alpha_steps_per_mm                           100              # Steps per mm for alpha stepper ---- X axis --- 100 Default Micromake 16 microstepping
-beta_steps_per_mm                            100              # Steps per mm for beta stepper ---- Y axis --- 100 Default Micromake 16 microstepping
-gamma_steps_per_mm                           100              # Steps per mm for gamma stepper ---- Z axis --- 100 Default Micromake 16 microstepping
+alpha_steps_per_mm                           200              # Steps per mm for alpha stepper ---- X axis --- 100 Default Micromake 16 microstepping
+beta_steps_per_mm                            200              # Steps per mm for beta stepper ---- Y axis --- 100 Default Micromake 16 microstepping
+gamma_steps_per_mm                           200              # Steps per mm for gamma stepper ---- Z axis --- 100 Default Micromake 16 microstepping
 
 arm_solution                                 linear_delta     # selects the delta arm solution
 arm_length                                   217.3            # this is the length of an arm from hinge to hinge ---- 217.3 Default Micromake
-arm_radius                                   105            # this is the horizontal distance from hinge to hinge ---- 105 Default Micromake
+arm_radius                                   105              # this is the horizontal distance from hinge to hinge ---- 105 Default Micromake
                                                               # when the effector is centered
 
 # Planner module configuration : Look-ahead and acceleration configuration
 # See http://smoothieware.org/motion-control
-acceleration                                 3000             # Acceleration in mm/second/second.
+acceleration                                 2500             # Acceleration in mm/second/second.
 #z_acceleration                              500              # Acceleration for Z only moves in mm/s^2, 0 uses acceleration which is the default. DO NOT SET ON A DELTA
 junction_deviation                           0.05             # See http://smoothieware.org/motion-control#junction-deviation
 #z_junction_deviation                        0.0              # For Z only moves, -1 uses junction_deviation, zero disables junction_deviation on z moves DO NOT SET ON A DELTA
@@ -49,33 +49,33 @@ z_axis_max_speed                             36000            # Maximum speed in
 alpha_step_pin                               2.0              # Pin for alpha stepper step signal
 alpha_dir_pin                                0.5              # Pin for alpha stepper direction
 alpha_en_pin                                 0.4              # Pin for alpha enable pin
-alpha_current                                0.8              # X stepper motor current
-alpha_max_rate                               36000.0          # mm/min
+alpha_current                                0.6              # X stepper motor current
+alpha_max_rate                               30000.0          # mm/min
 
 # --------- Y axis ---------
 beta_step_pin                                2.1              # Pin for beta stepper step signal
 beta_dir_pin                                 0.11             # Pin for beta stepper direction
 beta_en_pin                                  0.10             # Pin for beta enable
-beta_current                                 0.8              # Y stepper motor current
-beta_max_rate                                36000.0          # mm/min
+beta_current                                 0.6              # Y stepper motor current
+beta_max_rate                                30000.0          # mm/min
 
 # --------- Z axis ---------
 gamma_step_pin                               2.2              # Pin for gamma stepper step signal
 gamma_dir_pin                                0.20             # Pin for gamma stepper direction
 gamma_en_pin                                 0.19             # Pin for gamma enable
-gamma_current                                0.8              # Z stepper motor current
-gamma_max_rate                               36000.0          # mm/min
+gamma_current                                0.6              # Z stepper motor current
+gamma_max_rate                               30000.0          # mm/min
 
 
 # Extruder module configuration
 extruder.hotend.enable                          true             # Whether to activate the extruder module at all. All configuration is ignored if false
-extruder.hotend.steps_per_mm                    168.5              # Steps per mm for extruder stepper
+extruder.hotend.steps_per_mm                    1026              # Steps per mm for extruder stepper
 extruder.hotend.default_feed_rate               600              # Default rate ( mm/minute ) for moves where only the extruder moves
 extruder.hotend.acceleration                    500              # Acceleration for the stepper motor, as of 0.6, arbitrary ratio
 extruder.hotend.max_speed                       50               # mm/s
 
 extruder.hotend.step_pin                        2.3              # Pin for extruder step signal
-extruder.hotend.dir_pin                         0.22!             # Pin for extruder dir signal
+extruder.hotend.dir_pin                         0.22             # Pin for extruder dir signal
 extruder.hotend.en_pin                          0.21             # Pin for extruder enable signal
 
 # extruder offset
@@ -108,8 +108,8 @@ temperature_control.hotend.enable            true             # Whether to activ
                                                               # All configuration is ignored if false.
 temperature_control.hotend.thermistor_pin    0.23             # Pin for the thermistor to read
 temperature_control.hotend.heater_pin        2.7              # Pin that controls the heater
-#temperature_control.hotend.thermistor        Semitec-104NT4	  # see http://smoothieware.org/temperaturecontrol#toc5
-temperature_control.hotend.beta              3950 # or set the beta value
+temperature_control.hotend.thermistor        Semitec-104NT4	  # see http://smoothieware.org/temperaturecontrol#toc5
+#temperature_control.hotend.beta              3950 # or set the beta value
 
 temperature_control.hotend.set_m_code        104              #
 temperature_control.hotend.set_and_wait_m_code 109            #
@@ -128,7 +128,7 @@ temperature_control.hotend.designator        T                #
 
 #temperature_control.hotend.max_pwm          64               # max pwm, 64 is a good value if driving a 12v resistor with 24v.
 
-temperature_control.bed.enable               false             #
+temperature_control.bed.enable               true             #
 temperature_control.bed.thermistor_pin       0.24             #
 temperature_control.bed.heater_pin           2.5              #
 temperature_control.bed.thermistor           Honeywell100K    # see http://smoothieware.org/temperaturecontrol#toc5
@@ -141,6 +141,15 @@ temperature_control.bed.designator           B                #
 #temperature_control.bed.bang_bang            false           # set to true to use bang bang control rather than PID
 #temperature_control.bed.hysteresis           2.0             # set to the temperature in degrees C to use as hysteresis
                                                               # when using bang bang
+# automatically toggle a switch at a specified temperature. Different ones of these may be defined to monitor different temperatures and switch different swithxes
+# useful to turn on a fan or water pump to cool the hotend
+temperatureswitch.hotend.enable              true             #
+temperatureswitch.hotend.designator          T                # first character of the temperature control designator to use as the temperature sensor to monitor
+temperatureswitch.hotend.switch              misc             # select which switch to use, matches the name of the defined switch
+temperatureswitch.hotend.threshold_temp      50.0             # temperature to turn on (if rising) or off the switch
+temperatureswitch.hotend.heatup_poll         15               # poll heatup at 15 sec intervals
+temperatureswitch.hotend.cooldown_poll       45               # poll cooldown at 60 sec intervals															  
+															  
 
 # Switch module for fan control
 switch.fan.enable                            true             #
@@ -148,7 +157,17 @@ switch.fan.input_on_command                  M106             #
 switch.fan.input_off_command                 M107             #
 switch.fan.output_pin                        2.6              # 2.6 i Heater 2 Connector
 switch.fan.output_type                       pwm              # pwm output settable with S parameter in the input_on_comand
-#switch.fan.max_pwm                           255              # set max pwm for the pin default is 255
+#switch.fan.max_pwm                          255              # set max pwm for the pin default is 255
+
+
+# Switch module for servo control
+switch.servo.enable						true		#
+switch.servo.input_on_command			M280		# M280 S7.5 would be midway
+switch.servo.input_off_command			M281		# same as M280 S0 0% duty cycle, servo off
+switch.servo.output_pin					1.23		# must be a PWM capable pin
+switch.servo.output_type				hwpwm		# H/W pwm output settable with S parameter
+switch.servo.pwm_period_ms				20		# set period to 20ms (50Hz), default 50Hz
+
 
 # --------- Connect hotend fan to Pin 2.4 and fan will turn on/off when hotend reaches 60 degrees Celcius --------------
 
@@ -167,7 +186,6 @@ temperatureswitch.hotend.switch              misc             # select which swi
 temperatureswitch.hotend.threshold_temp      50.0             # temperature to turn on (if rising) or off the switch
 temperatureswitch.hotend.heatup_poll         15               # poll heatup at 15 sec intervals
 temperatureswitch.hotend.cooldown_poll       45               # poll cooldown at 60 sec intervals
-
 
 #-------------------------------------------------------------------------------------------------------------------------
 
@@ -199,35 +217,37 @@ beta_slow_homing_rate_mm_s                   15               # Beta  tower slow
 gamma_fast_homing_rate_mm_s                  200              # Gamma tower fast homing feedrate in mm/second
 gamma_slow_homing_rate_mm_s                  15               # Gamma tower slow homing feedrate in mm/second
 
-alpha_homing_retract_mm                      5                # Distance to retract from the endstop after it is hit for alpha/X
-beta_homing_retract_mm                       5                # Distance to retract from the endstop after it is hit for beta/Y
-gamma_homing_retract_mm                      5                # Distance to retract from the endstop after it is hit for gamma/Z
+alpha_homing_retract_mm                      15                # Distance to retract from the endstop after it is hit for alpha/X
+beta_homing_retract_mm                       15                # Distance to retract from the endstop after it is hit for beta/Y
+gamma_homing_retract_mm                      15                # Distance to retract from the endstop after it is hit for gamma/Z
 
 alpha_trim                                   0                 # software trim for alpha stepper endstop (in mm)
 beta_trim                                    0                 # software trim for beta stepper endstop (in mm)
 gamma_trim                                   0                 # software trim for gamma stepper endstop (in mm)
 
-zprobe.enable                                true           # set to true to enable a zprobe
-zprobe.probe_pin                             1.28!^          # pin probe is attached to if NC remove the !
-#zprobe.debounce_count                       300             # set if noisy
+## Z-probe
+# See http://smoothieware.org/zprobe
+zprobe.enable                                true           # Set to true to enable a zprobe
+zprobe.probe_pin                             1.28^          # Pin probe is attached to, if NC remove the !
+zprobe.slow_feedrate                         10               # Mm/sec probe feed rate
+#zprobe.debounce_count                       100             # Set if noisy
+zprobe.fast_feedrate                         300             # Move feedrate mm/sec
+zprobe.probe_height                          25               # How much above bed to start probe
+#gamma_min_endstop                           nc              # Normally 1.28. Change to nc to prevent conflict,
 
-zprobe.return_feedrate	                     100	             # Speed in millimetres/second at which the probe does the return after a probe.
-zprobe.slow_feedrate                         5             # mm/sec probe feed rate
-zprobe.fast_feedrate                         450             # move feedrate
-zprobe.probe_height                          5               # how much above bed to start probe
+# Levelling strategy
 
-# associated with zprobe the leveling strategy to use
-leveling-strategy.delta-calibration.enable                  true            # basic delta calibration
-leveling-strategy.delta-calibration.radius                  75             # the probe radius
-leveling-strategy.delta-calibration.initial_height         55        # The initial height above the bed we stop the initial move down after home
+# Example for the delta calibration strategy
+leveling-strategy.delta-calibration.enable   true            # Enable basic delta calibration
+leveling-strategy.delta-calibration.radius   70             # the probe radius
 
-
-leveling-strategy.delta-grid.enable                        true
-leveling-strategy.delta-grid.radius                        75
-leveling-strategy.delta-grid.initial_heigh                55
-leveling-strategy.delta-grid.size                          13
-leveling-strategy.delta-grid.do_home                       true
-leveling-strategy.delta-grid.save                          true
+# Example for the delta grid leveling strategy
+leveling-strategy.delta-grid.enable          true            # Enable grid leveling
+leveling-strategy.delta-grid.radius          70              # Grid radius in millimeters
+leveling-strategy.delta-grid.size            9               # Grid size, must be an odd number
+leveling-strategy.delta-grid.do_home         true            # Whether to home before calibration
+leveling-strategy.delta-grid.save            true            # Whether to automatically save the grid
+leveling-strategy.delta-grid.initial_height  10              # Height at which to start probling
 
 
 
@@ -250,7 +270,7 @@ panel.spi_cs_pin                            0.16              # spi chip select 
 panel.encoder_a_pin                         3.25!^            # encoder pin         ; GLCD EXP2 Pin 3
 panel.encoder_b_pin                         3.26!^            # encoder pin         ; GLCD EXP2 Pin 5
 panel.click_button_pin                      1.30!^            # click button        ; GLCD EXP1 Pin 2
-panel.buzz_pin                              1.31              # pin for buzzer      ; GLCD EXP1 Pin 1
+#panel.buzz_pin                              1.31              # pin for buzzer      ; GLCD EXP1 Pin 1
 panel.button_pause_pin                      2.11^             # kill/pause          ; GLCD EXP2 Pin 8 either
 panel.back_button_pin                       2.11!^            # back button         ; GLCD EXP2 Pin 8 or
 
@@ -268,15 +288,48 @@ panel.gamma_jog_feedrate                     200               # z jogging feedr
 panel.hotend_temperature                     215               # temp to set hotend when preheat is selected
 panel.bed_temperature                        60                # temp to set bed when preheat is selected
 
-# Example of a custom menu entry, which will show up in the Custom entry.
+## Custom menus : Example of a custom menu entry, which will show up in the Custom entry.
 # NOTE _ gets converted to space in the menu and commands, | is used to separate multiple commands
-custom_menu.power_on.enable                true              #
-custom_menu.power_on.name                  Power_on          #
-custom_menu.power_on.command               M80               #
+custom_menu.coolingfan_off.enable              true           	  #
+custom_menu.coolingfan_off.name                CoolFan_Off	  #
+custom_menu.coolingfan_off.command             M43        #
 
-custom_menu.power_off.enable               true              #
-custom_menu.power_off.name                 Power_off         #
-custom_menu.power_off.command              M81               #
+custom_menu.coolingfan_on.enable              true              #
+custom_menu.coolingfan_on.name                CoolFan_On		  #
+custom_menu.coolingfan_on.command             M42           	  #
+
+custom_menu.blower_off.enable              true              #
+custom_menu.blower_off.name                Blower_Off		  #
+custom_menu.blower_off.command             M107           	  #
+
+custom_menu.blower_on.enable              true               #
+custom_menu.blower_on.name                Blower_On	#
+custom_menu.blower_on.command             M106_S255           #
+
+custom_menu.bl_up.enable               true             	  #
+custom_menu.bl_up.name                 BLTouch_Up           #
+custom_menu.bl_up.command              M280_PS7           #
+
+custom_menu.bl_down.enable             true              #
+custom_menu.bl_down.name               BLTouch_Down        #
+custom_menu.bl_down.command            M280_PS3 	        #
+
+custom_menu.bl_reset.enable             true              #
+custom_menu.bl_reset.name               BLTouch_Reset        #
+custom_menu.bl_reset.command            M280_PS10.6 	        #
+
+custom_menu.bl_test.enable             true              #
+custom_menu.bl_test.name               BLTouch_Test        #
+custom_menu.bl_test.command            M280_PS8.4 	        #
+
+custom_menu.auto_calibrate.enable         true            	  #
+custom_menu.auto_calibrate.name           Auto_Calibrate			#
+custom_menu.auto_calibrate.command       	M280_S10.6|G28|M280_S3|M190_S80|G32|G31|M374|M500|M280_S7|G28|M140_S0|M84|reset#
+
+custom_menu.BL_Offset.enable         true            	  #
+custom_menu.BL_Offset.name           BL_Offset			#
+custom_menu.BL_Offset.command       	G28|M280_PS3|G30_Z0|M280_PS7#
+
 
 # Only needed on a smoothieboard
 currentcontrol_module_enable                 true             #
