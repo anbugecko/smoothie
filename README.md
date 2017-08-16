@@ -14,7 +14,7 @@ Pronterface can connect to Smoothie over the network by using telnet</br>
 just enter ip_of_smoothie:23instead of the serial port before clicking 'Connect'. </br></br>
 
 
-#Delta calibration and grid levling
+# Delta calibration and grid levling
 
 
 
@@ -31,7 +31,7 @@ M374; Saves the grid to a file on the SD card (ZGrid).</br>
 M500; Saves the probe settings</br> 
 M280 S7.0; pin up</br></br>
 
-#BLTouch commands</br></br>
+# BLTouch commands</br>
 M280 S3.0; Pin down</br>
 M280 S7.0; pin up</br>
 M280 S5.5 zpin test mode</br>
