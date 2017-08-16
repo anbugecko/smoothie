@@ -29,4 +29,11 @@ G0 Z0; Then move to the point the machine currently thinks is Z 0</br>
 M306 Z0; Save new z height</br>
 M374; Saves the grid to a file on the SD card (ZGrid).</br>
 M500; Saves the probe settings</br> 
-M280 S7.0; pin up
+M280 S7.0; pin up</br></br>
+
+#Bl Thouch commands
+M280 S3.0; Pin down</br>
+M280 S7.0; pin up</br>
+M280 S5.5 zpin test mode</br>
+M280 S8.4 self test</br>
+M280 S10.6 Alarm release</br>
