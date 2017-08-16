@@ -31,7 +31,7 @@ M374; Saves the grid to a file on the SD card (ZGrid).</br>
 M500; Saves the probe settings</br> 
 M280 S7.0; pin up</br></br>
 
-#Bl Thouch commands
+#BLTouch commands</br></br>
 M280 S3.0; Pin down</br>
 M280 S7.0; pin up</br>
 M280 S5.5 zpin test mode</br>
