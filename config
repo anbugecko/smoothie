@@ -273,6 +273,7 @@ panel.click_button_pin                      1.30!^            # click button    
 #panel.buzz_pin                              1.31              # pin for buzzer      ; GLCD EXP1 Pin 1
 panel.button_pause_pin                      2.11^             # kill/pause          ; GLCD EXP2 Pin 8 either
 panel.back_button_pin                       2.11!^            # back button         ; GLCD EXP2 Pin 8 or
+panel.encoder_resolution                    4                 # number of clicks to move 1 item - default 2
 
 panel.external_sd                     true              # set to true if there is an extrernal sdcard on the panel
 panel.external_sd.spi_channel         1                 # set spi channel the sdcard is on
